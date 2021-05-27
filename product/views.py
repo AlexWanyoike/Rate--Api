@@ -3,5 +3,8 @@ from django.shortcuts import render , redirect
 
 # Create your views here.
 def base(request):
-    return render(request ,'base.html')
+    return render(request ,'all-products/base.html')
+
+def main(request):
+    return render(request ,'all-products/main.html')
 
