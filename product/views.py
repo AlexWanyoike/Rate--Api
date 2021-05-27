@@ -8,3 +8,5 @@ def base(request):
 def main(request):
     return render(request ,'all-products/main.html')
 
+def details(request):
+    return render(request ,'details.html')
