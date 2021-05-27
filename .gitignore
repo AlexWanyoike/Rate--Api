@@ -1,0 +1,30 @@
+<!-- 
+        {% block styles %} {% bootstrap_css %}
+        <linkel="stylesheet" href="{% static '/css/signup.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/signupdetails.css' %}" />
+        {% endblock %} --> r
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            
+            <div  class="mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-text">
+                        <app-github-profile-card [githubProfile]="githubProfile"></app-github-profile-card>
+                    </div>
+                    
+                </div>
+                <div class="col-md-9">
+                    <div class="form-text">
+                        <app-github-profile-data [githubProfile]="githubProfile"></app-github-profile-data>
+                    </div>   
+                </div>
+            </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
