@@ -10,3 +10,6 @@ def main(request):
 
 def details(request):
     return render(request ,'details.html')
+
+def profile(request):
+    return render(request ,'profile.html')

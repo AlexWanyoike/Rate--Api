@@ -1,0 +1,171 @@
+{% load bootstrap3 %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %} {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static '/css/profile.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/list.css' %}">
+   
+    {% endblock %}
+    <title>Document</title>
+</head>
+<body>
+    <header>
+
+        <div class="container">
+    
+            <div class="profile">
+    
+                <div class="profile-image">
+    
+                    <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+    
+                </div>
+    
+                <div class="profile-user-settings">
+    
+                    <h1 class="profile-user-name">janedoe_</h1>
+    
+                    <button class="btn profile-edit-btn">Edit Profile</button>
+    
+                    <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+    
+                </div>
+    
+                <div class="profile-stats">
+    
+                    <ul>
+                        <li><span class="profile-stat-count">164</span> posts</li>
+                        <li><span class="profile-stat-count">188</span> followers</li>
+                        <li><span class="profile-stat-count">206</span> following</li>
+                    </ul>
+    
+                </div>
+    
+                <div class="profile-bio">
+    
+                    <p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+    
+                </div>
+                
+            </div>
+            <!-- End of profile section -->
+            <div class="container">
+                <hr>
+            </div>
+        </div>
+        <!-- End of container -->
+    </header>
+    <!-- This is for all the List of all the Photos-->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="card">
+                    <div class="card-header">
+                        Categories
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href=""></a>All</a>
+                        </li>
+                        
+                        <li class=" list-group-item">
+                            <a href="">
+                                
+                            </a>
+                        </li>
+                       
+
+
+                        <a href="" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <section class="gallery-block cards-gallery">
+                        <div class="container">
+                            
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F1.jpg"><img src="images/F1.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F2.jpg"><img src="images/F2.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F3.jpg"><img src="images/F3.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F4.jpg"><img src="images/F4.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F5.jpg"><img src="images/F5.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 transform-on-hover">
+                                        <a class="lightbox" href="images/F6.jpg"><img src="images/F6.jpg" class="card-img-top"></a>
+                                        <div class="card-body">
+                                            <h6>Lorem Ipsum</h6>
+                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
