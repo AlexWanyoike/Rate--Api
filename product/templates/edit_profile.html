@@ -12,43 +12,26 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div class="container">
+        <a href="{% url 'main' %}" class="btn btn-dark">Home Page</a>
+    </div>
+    
     <div class="wrapper" style="background-image: url('tech.jpg');">
         <div class="inner">
         <div class="image-holder">
         <img src="{% static '/images/pexels-francesco-ungaro-2289407.jpg' %}" alt="image">
         </div>
-        <form action="">
-        <h3>Edit Profile</h3>
-        <div class="form-group">
-        <input type="text" placeholder="First Name" class="form-control">
-        <input type="text" placeholder="Last Name" class="form-control">
-        </div>
-        
-        <div class="form-wrapper">
-        <input type="text" placeholder="Username" class="form-control">
-        </div>
 
-        <div class="form-wrapper">
-        <input type="text" placeholder="Email Address " class="form-control">
-        </div>
-
-        <div class="form-wrapper">
-            <input type="text" placeholder="Bio - Tell us About Yourself" class="form-control"> 
-        </div>
-        <div class="form-wrapper">
-            <input type="number" placeholder="Contact Information" class="form-control" minlength="10"> 
-        </div>
-
-        <div class="form-wrapper m-3">
-            <label>Upload Profile Pic</label>
-            <input required name="images" type="file" multiple class="form-control-file">
-        </div>
-       <br>
-       <div>
-        <button type='submit' class="btn btn-dark m-3">Submit</button>
-       </div>
-        
+        <form action="/profile/{{profile.id}}" method="post" enctype="multipart/form-data" >
+            <h3>Edit Profile</h3>
+            {%csrf_token%}
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <input type="submit" class="btn btn-dark btn-sm" value="Update Profile">
+            </div>           
         </form>
+
         </div>
         </div>
 

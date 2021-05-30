@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post , Profile , Comment
 from django.contrib import messages
-from .forms import  CommentForm , CreatePostForm
+from .forms import  CommentForm , CreatePostForm, UpdateProfileForm
 from .email import send_welcome_email
 from django.urls import reverse_lazy
 import datetime as dt
@@ -53,8 +53,23 @@ def profile(request, username):
 def login(request):
     return render(request ,'/registration/login.html')
 
-def edit_profile(request):
-    return render(request ,'edit_profile.html')
+def edit_profile(request ):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+            
+            send_welcome_email(profile.user.username, profile.user.email)
+            
+        return redirect('/accounts/login', username=current_user.username)
+
+    else:
+        form = UpdateProfileForm()
+    return render(request, 'edit_profile.html', {"form": form})
+    
 
 
 def comment(request , post_id):

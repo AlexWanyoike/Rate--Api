@@ -20,3 +20,8 @@ class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Post
         exclude = ['profile', 'date_posted ' , 'rating', 'user']
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
