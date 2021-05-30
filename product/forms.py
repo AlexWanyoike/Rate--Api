@@ -1,10 +1,17 @@
 from django import forms
+from .models import Post , Profile , Comment
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserRegisterForm , CommentForm
 
-class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
+# class UserRegisterForm(forms.ModelForm):
+#     email = forms.EmailField()
 
+#     class Meta:
+#         model = User
+#         fields = ['username', 'email', 'password1', 'password2']
+
+class CommentForm(forms.ModelForm ):
+    
     class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        model = Comment
+        fields = ['user', 'post', 'content']

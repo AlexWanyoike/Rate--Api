@@ -244,43 +244,37 @@ body {
           <div class="card">
             <div class="card-body">
               <!-- Comment Form -->
-              <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                  <label for="inputPassword6" class="col-form-label">Comment</label>
+             
+              <form role="add_comment" , action= 'comment'>
+                {% csrf_token%}
+                <div class="fal fa-comment">
+                    <input type="text" class="form-control" placeholder="Add a comment" name="comment"
+                        style="font-size: 1.2rem; border: 0;">
+                    <div class="input-group-btn">
+                      <button type="button" style="font-size: 1.2rem;" type="submit" class="btn btn-dark">Comment</button>
+                    </div>
                 </div>
-                <div class="col-auto">
-                  <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-                </div>
-                
-              </div> 
+              </form>
+
               <br>
               <div class="list-group">
-                <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">List group item heading</h5>
-                      <small>3 days ago</small>
+                {% for comment in comments %}
+                  {% if comment.post.id == post.id %}
+
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1 text-capitalize">Rating of the issue{{comment.user}}</h5>
+                          <small>{{comment.content}}</small>
+                        </div>
+                        <p class="mb-1"> Time Posted: {{comment.date_posted}}</p>
+                        <small>Rating</small>
+                      </a>
                     </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small>And some small print.</small>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">List group item heading</h5>
-                      <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-muted">And some muted small print.</small>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">List group item heading</h5>
-                      <small class="text-muted">3 days ago</small>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small class="text-muted">And some muted small print.</small>
-                  </a>
-                </div>
+
+                    
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>
             
