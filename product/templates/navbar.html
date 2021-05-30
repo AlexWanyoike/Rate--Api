@@ -20,25 +20,24 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'create_post' %}">Create Post</a></li>
                     <li><a href="/profile/{{user.username}}">Profile</a></li>
+                    <li><a href="">
+                        <div class="container-fluid">
+                            <form class="d-flex">
+                              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                              <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </a></li>
                     <li><a href="/logout">Logout</a></li>
-                    <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
                     {% else %}
                     <li><a href="{% url 'main' %}">Home</a></li>
-                    
-                    <li><a class='btn btn-default' href="/accounts/login">Login</a></li>
                     <li><a href="/accounts/register ">Register</a></li>
-                    {% endif %}
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    <li><a href="/accounts/login">Login</a></li>
+                    {% endif %}                    
                 </ul>
+
             </nav>
-            <a class="cta" href="#">Login</a>
+            
             <p class="menu cta">Menu</p>
         </header>
         <div class="overlay">

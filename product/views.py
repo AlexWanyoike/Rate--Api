@@ -3,10 +3,11 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post , Profile , Comment
 from django.contrib import messages
-from .forms import  CommentForm , CreatePostForm, UpdateProfileForm
+from .forms import  CommentForm , CreatePostForm, UpdateProfileForm , NewsLetterForm
 from .email import send_welcome_email
 from django.urls import reverse_lazy
 import datetime as dt
+from .email import send_welcome_email
 
 
 # Create your views here.
@@ -95,5 +96,14 @@ def create_post(request):
     else:
         form = CreatePostForm()
         return render(request, 'create_post.html', {"form": form})
+
+
+def welcome_mail(request):
+    user = request.user
+    email = user.email
+    name = user.name
+    send_welcome_email(name,email)
+    
+    return redirect(profile)
     
     

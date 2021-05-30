@@ -12,6 +12,7 @@ urlpatterns=[
     path('register',views.register,name = 'register'),
     path('create_post/',views.create_post,name = 'create_post'),
     path('registration/login',views.login,name = 'login'),
+    path('welcome/', views.welcome_mail, name='welcome_email'),
     #path('tinymce/', include('tinymce.urls')),
 ]
 

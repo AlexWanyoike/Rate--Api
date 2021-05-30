@@ -78,7 +78,6 @@ alex.wanyoike12@gmail.com
 
 ## License and Copyright
 
-[LICENSE](https://github.com/AlexWanyoike/Instagram-Clone/blob/005422b6a0fb8f2d4df04cb263a4be5301f38e86/LICENSE
-)
+[LICENSE](https://github.com/AlexWanyoike/Rate--Api/blob/1f6cd59ff548786f38a9517dca5168c36b249487/LICENSE)
 
 (C) Copyright 2021 Alex Wanyoike
