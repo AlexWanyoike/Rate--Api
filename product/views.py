@@ -5,6 +5,8 @@ from .models import Post , Profile , Comment
 from django.contrib import messages
 from .forms import  CommentForm , CreatePostForm
 from .email import send_welcome_email
+from django.urls import reverse_lazy
+import datetime as dt
 
 
 # Create your views here.
@@ -14,12 +16,13 @@ def base(request):
 def main(request):
     post = request.GET.get('post')
     post = Post.objects.all()
-    
     context = {'post': post }
     return render(request ,'all-products/main.html', context)
 
-def details(request):
+def details(request , pk):
     post = Post.objects.all()
+    post = Post.objects.get(id=pk)
+    
     profile = Profile.objects.all()
     comments = Comment.objects.all()
     context = {'post': post , 'profile': profile , 'comments': comments}

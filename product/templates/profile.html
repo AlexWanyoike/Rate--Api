@@ -33,7 +33,7 @@
     
                     <h1 class="profile-user-name text-capitalize">{{ user.profile.user }}</h1>
     
-                    <button class="btn profile-edit-btn">Edit Profile</button>
+                    <a href="{% url 'edit_profile' %}" class="btn profile-edit-btn" >Edit Profile</a>
     
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
     
@@ -100,10 +100,10 @@
                             <div class="row">
                                 <div class="col-md-6 col-lg-4">
                                     <div class="card border-0 transform-on-hover">
-                                        <a class="lightbox" href="images/F1.jpg"><img src="{{}}" class="card-img-top"></a>
+                                        <a class="lightbox" href="{% url 'details' post.id %}"><img src="{{post.image.url}}" class="card-img-top" height="150px" width="150px"></a>
                                         <div class="card-body">
                                             <h6>{{ profile.user. }}</h6>
-                                            <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                            <p class="text-muted card-text">{{post.content}}</p>
                                         </div>
                                     </div>
                                 </div>

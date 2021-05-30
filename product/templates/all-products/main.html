@@ -69,8 +69,7 @@
                                             <h6 class="text-capitalize">Posted by: <strong>{{user.profile.user}}</strong></h6>
                                             <h6><br><em><strong>{{post.date_posted }}</strong></em></h6>
                                             <div>
-                                                <a href="{% url 'details'%}" class="btn profile-edit-btn btn-btn-dark">Home Page</a>
-
+                                                <a href="{% url 'details' post.id %}" class="btn profile-edit-btn btn-btn-dark">Home Page</a>
                                             </div>
                                             
                                         </div>

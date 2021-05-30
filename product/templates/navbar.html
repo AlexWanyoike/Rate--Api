@@ -17,14 +17,25 @@
             <a class="logo" href="/">B-RATED</a>
             <nav>
                 <ul class="nav__links">
-                    <li><a href="{% url 'main' %}">Home</a></li>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'details' %}">Details</a></li>
+                    {% if user.is_authenticated %}
                     <li><a href="{% url 'create_post' %}">Create Post</a></li>
+                    <li><a href="/profile/{{user.username}}">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
                     <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+                    {% else %}
+                    <li><a href="{% url 'main' %}">Home</a></li>
+                    
                     <li><a class='btn btn-default' href="/accounts/login">Login</a></li>
                     <li><a href="/accounts/register ">Register</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    {% endif %}
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </ul>
             </nav>
             <a class="cta" href="#">Login</a>
