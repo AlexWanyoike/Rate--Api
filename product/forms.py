@@ -15,3 +15,8 @@ class CommentForm(forms.ModelForm ):
     class Meta:
         model = Comment
         fields = ['user', 'post', 'content']
+
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['profile', 'date_posted ' , 'rating', 'user']

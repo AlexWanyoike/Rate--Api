@@ -10,6 +10,7 @@ urlpatterns=[
     path('profile/',views.profile,name = 'profile'),
     path('edit_profile/',views.edit_profile,name = 'edit_profile'),
     path('register',views.register,name = 'register'),
+    path('create_post/',views.create_post,name = 'create_post'),
     path('registration/login',views.login,name = 'login'),
 ]
 

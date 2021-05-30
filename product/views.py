@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post , Profile , Comment
 from django.contrib import messages
-from .forms import  CommentForm
+from .forms import  CommentForm , CreatePostForm
 from .email import send_welcome_email
 
 
@@ -63,3 +63,19 @@ def comment(request , post_id):
     comment.save_comment()
 
     return redirect('main')
+
+def create_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+        return HttpResponseRedirect('/main')
+           
+    else:
+        form = CreatePostForm()
+        return render(request, 'create_post.html', {"form": form})
+    
+    
