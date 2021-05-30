@@ -186,24 +186,31 @@ body {
 }
 }
   </style>
+
   <div class="container ">
+    <a href="{% url 'main'%}" class="btn btn-dark">Home Page</a>
+    {% for post in post %}
     <div class="row">
       <div  class="mt-3">
 
         <div class="card">
           <div class="card-header">
-             <h3>Images are everything</h3>   
+             <h3>{{ post.title }}</h3>   
           </div>
-          <img class="card-img-top" src="{% static '/images/pexels-francesco-ungaro-2289407.jpg' %}" alt="Card image top" height="150px" width="150px%">
+          <img class="card-img-top" src=" {{ post.image.url}} " alt="Card image top" height="150px" width="150px%">
           <div class="card-body">
-              <p class="card-text">A Card with a top and bottom images</p>4
-
-              <p>List if all the cateries</p>
+              <p class="card-text"></p>
+              <p>{{post.title}}</p>
+              <p>{{post.content}}</p>
+              <p>{{post.date_posted}}</p>
+              <p> Author : {{post.author}}</p>
+              
           </div>
         </div>
 
       </div>
     </div>
+    
     <br>
   
     
@@ -288,19 +295,11 @@ body {
       <!-- Add Comment -->
 
       
-
-
-      
   </div>
 
 
-   
+  {% endfor %}
 
-    
- 
-
-
-    
   {% block scripts %}
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% bootstrap_javascript %}
