@@ -13,3 +13,9 @@ def details(request):
 
 def profile(request):
     return render(request ,'profile.html')
+
+def register(request):
+    return render(request ,'/accounts/login.html')
+
+def login(request):
+    return render(request ,'/registration/login.html')

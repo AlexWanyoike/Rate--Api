@@ -1,39 +1,37 @@
- <div class="container mt-3">
-        <div class="row">
-            <div  class="mt-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-text">
-                            <div class="card">
-                                
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="data">Categories</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="list-group">
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+      {% endif %}
+      <div class="panel panel-default">
 
-                                            <li class="list-group-item">
-                                                Location: 
-                                            </li>
-                                            <li class="list-group-item">
-                                                Location: 
-                                            </li>
-                                            <li class="list-group-item">
-                                                Location: 
-                                            </li>
-                                            
-                                        </ul>
-                                
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                   
-                </div>
-            </div>  
+        <div class="panel-heading">
+          <h3 class="text-center">Sign In</h3>
         </div>
-        
+        <div class="panel-body">
+
+          <form action="" method="post">
+            
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            </div>
+            <input type="hidden" name="next" value="">
+          </form>
+
+        </div>
+
+      </div>
+
     </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %}

@@ -8,6 +8,8 @@ urlpatterns=[
     path('main',views.main,name = 'main'),
     path('details',views.details,name = 'details'),
     path('profile/',views.profile,name = 'profile'),
+    path('register',views.register,name = 'register'),
+    path('registration/login',views.login,name = 'login'),
 ]
 
 if settings.DEBUG:
