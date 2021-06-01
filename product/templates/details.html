@@ -14,7 +14,8 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
   {% if title %}
   <title>Be-Rated Details- {{title}}</title>
@@ -23,13 +24,18 @@
   {% endif %}
   {% block styles %}
     {% bootstrap_css %}
-    
+    <link rel="stylesheet" href="{% static '/css/details.css' %}">
   {% endblock %}
-  <link rel="stylesheet" href="{% static '/css/details.css' %}">
+  
 
 </head>
 <body>
   <style>
+    p , h3 , h4 , h5, h6, li ,ul{
+      font-family: 'Montserrat', sans-serif;
+      color: rgb(0, 0, 0);
+
+    }
     form button{
     width: 110px;
     height: 35px;
@@ -46,145 +52,148 @@
     align-items: center;
     align-content: center;
 
-}
-.btn {
+    }
+    .btn {
+        align-items: center;
+        margin: 20px;
+    }
+    .form1{
+        padding: 5px 5px;
+        margin: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 35px;
+    }
+    .card{
+        background-color: white !important;
+    }
+
+    .form-text{
+        position: center;
+        width: 100%;
+        padding: 5px;
+        font-size: 25px;
+        border: 2px solid #ccc7c7;
+        font-family: inherit;
+        font-family: 'Crimson Text', serif;
+        font-size: 18px;
+    }
+
+    h2{
+        text-align: center;
+        margin: 0ch;
+        color: #24252a;
+    }
+
+    * 
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    }
+
+    body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 20px;
-}
-.form1{
-    padding: 5px 5px;
-    margin: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 35px;
-}
-.card{
-    background-color: white !important;
-}
+    min-height: 100vh;
+    }
 
-.form-text{
-    position: center;
+    .grid {
+    display: grid;
+    width: 114em;
+    grid-gap: 6rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    align-items: start;
+    }
+
+    .grid-item {
+    background-color: #fff;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.2s;
+    }
+
+    .grid-item:hover {
+    transform: translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+    }
+
+    .card-img {
+    display: block;
     width: 100%;
-    padding: 5px;
-    font-size: 25px;
-    border: 2px solid #ccc7c7;
-    font-family: inherit;
-    font-family: 'Crimson Text', serif;
-    font-size: 18px;
-}
+    height: 20rem;
+    object-fit: cover;
+    }
 
-h2{
-    text-align: center;
-    margin: 0ch;
-    color: #24252a;
-}
-
-* 
-{
-    margin: 0;
-    padding: 0;
-}
-
-html {
-box-sizing: border-box;
-font-size: 62.5%;
-}
-
-body {
-background-color: #eee;
-font-family: "Poppins", sans-serif;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
-}
-
-.grid {
-display: grid;
-width: 114em;
-grid-gap: 6rem;
-grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-align-items: start;
-}
-
-.grid-item {
-background-color: #fff;
-border-radius: 0.4rem;
-overflow: hidden;
-box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-cursor: pointer;
-transition: 0.2s;
-}
-
-.grid-item:hover {
-transform: translateY(-0.5%);
-box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
-}
-
-.card-img {
-display: block;
-width: 100%;
-height: 20rem;
-object-fit: cover;
-}
-
-.card-content {
-padding: 3rem;
-}
-
-.card-header {
-font-size: 3rem;
-font-weight: 500;
-color: #0d0d0d;
-margin-bottom: 1.5rem;
-}
-
-.card-text {
-font-size: 1.6rem;
-letter-spacing: 0.1rem;
-line-height: 1.7;
-color: #3d3d3d;
-margin-bottom: 2.5rem;
-}
-
-.card-btn {
-display: block;
-width: 100%;
-padding: 1.5rem;
-font-size: 2rem;
-text-align: center;
-color: #3363ff;
-background-color: #d8e0fd;
-border: none;
-border-radius: 0.4rem;
-transition: 0.2s;
-cursor: pointer;
-letter-spacing: 0.1rem;
-}
-
-.card-btn span {
-margin-left: 1rem;
-transition: 0.2s;
-}
-
-.card-btn:hover,
-.card-btn:active {
-background-color: #c2cffc;
-}
-
-.card-btn:hover span,
-.card-btn:active span {
-margin-left: 1.5rem;
-}
-
-@media only screen and (max-width: 60em) {
-body {
+    .card-content {
     padding: 3rem;
-}
+    }
 
-.grid {
-    grid-gap: 3rem;
-}
-}
+    .card-header {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(0, 0, 0);
+
+    }
+
+    .card-text {
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.7;
+    color: #3d3d3d;
+    margin-bottom: 2.5rem;
+    }
+
+    .card-btn {
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #3363ff;
+    background-color: #d8e0fd;
+    border: none;
+    border-radius: 0.4rem;
+    transition: 0.2s;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+    }
+
+    .card-btn span {
+    margin-left: 1rem;
+    transition: 0.2s;
+    }
+
+    .card-btn:hover,
+    .card-btn:active {
+    background-color: #c2cffc;
+    }
+
+    .card-btn:hover span,
+    .card-btn:active span {
+    margin-left: 1.5rem;
+    }
+
+    @media only screen and (max-width: 60em) {
+    body {
+        padding: 3rem;
+    }
+
+    .grid {
+        grid-gap: 3rem;
+    }
+    }
   </style>
 
   <div class="container ">
@@ -196,16 +205,18 @@ body {
 
         <div class="card">
           <div class="card-header">
-             <h3>{{ post.title }}</h3>   
+             <h3 class="text-center"><strong>{{ post.title }}</strong></h3>   
           </div>
           <img class="card-img-top" src=" {{ post.image.url}} " alt="Card image top" height="150px" width="150px%">
           <div class="card-body">
-              <p class="card-text"></p>
-              <p>{{post.title}}</p>
-              <p>{{post.content}}</p>
-              <p>{{post.date_posted}}</p>
-              <p> Author : {{post.author}}</p>
+              <h3 class="text-center">{{post.content}}</h3>
               
+              <p >{{post.date_posted}}</p>
+              <h5> Author : {{post.author}}</h5>
+              
+          </div>
+          <div class="center">
+            <a href="{{post.link}}" class="btn btn-success my-3 text-center">Website</a>
           </div>
         </div>
 
@@ -221,19 +232,19 @@ body {
         
         <div class="col-4">
           <div class="card text-white bg-dark mb-3" >
-            <div class="card-header">Header</div>
+            <div class="card-header">Rating</div>
             <div class="card-body">
               <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  A list item
+                  Design
                   <span class="badge bg-primary rounded-pill">14</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  A second list item
+                  Userability
                   <span class="badge bg-primary rounded-pill">2</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  A third list item
+                  Content
                   <span class="badge bg-primary rounded-pill">1</span>
                 </li>
               </ul>
@@ -265,11 +276,11 @@ body {
                     <div class="list-group">
                       <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1 text-capitalize">Rating of the issue{{comment.user}}</h5>
-                          <small>{{comment.content}}</small>
+                          <h5 class="mb-1 text-capitalize">{{comment.user}}</h5>
+                          <small>{{comment.date_voted}}</small>
                         </div>
-                        <p class="mb-1"> Time Posted: {{comment.date_posted}}</p>
-                        <small>Rating</small>
+                        <p class="mb-1 text-capitalize"> {{comment.content }}</p>
+                        <h6>Author: {{comment.post}}</h6>
                       </a>
                     </div>
                     

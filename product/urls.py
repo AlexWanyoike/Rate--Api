@@ -14,7 +14,8 @@ urlpatterns=[
     path('create_profile/',views.create_profile,name = 'create_profile'),
     path('registration/login',views.login,name = 'login'),
     path('welcome/', views.welcome_mail, name='welcome'),
-    
+    path('search_post/', views.search_post, name='search_post'),
+
     re_path('comment/(?P<post_id>\d+)', views.comment, name='comment'),
     path('api/profile/', views.ProfileList.as_view()),
     path('api/post/', views.PostList.as_view())

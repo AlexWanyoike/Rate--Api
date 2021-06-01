@@ -110,7 +110,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-        return HttpResponseRedirect('/main')
+        return HttpResponseRedirect('/')
            
     else:
         form = CreatePostForm()
@@ -124,6 +124,18 @@ def welcome_mail(request):
     send_welcome_email(name,email)
     
     return redirect(create_profile)
+
+def search_post(request):
+    if 'keyword' in request.GET and request.GET["keyword"]:
+        search_term = request.GET.get("keyword")
+        searched_posts = Profile.posts(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html', {"message":message,"posts": searched_posts})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {"message": message})
 
 class ProfileList(APIView):
     def get(self, request, format=None):

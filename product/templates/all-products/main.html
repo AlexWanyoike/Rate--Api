@@ -38,16 +38,19 @@
                             <div class="row">
                                 <div class="col-md-4 col-lg-4" style="margin-left: -10px ; " >
                                     <div class="card border-0 transform-on-hover">
-                                        <a class="lightbox" href="images/F1.jpg"><img src="{{post.image.url}}" class="card-img-top"></a>
+                                        <a class="lightbox" href="{% url 'details' post.id %}"><img src="{{post.image.url}}" class="card-img-top"></a>
                                         <div class="card-body">
-                                            <h6>Author: <strong>{{post.author}}</strong></h6>
-                                            <p class="text-muted card-text">{{post.title}}</p>
-                                            <h6 class="text-capitalize">Posted by: <strong>{{user.profile.user}}</strong></h6>
-                                            <h6><br><em><strong>{{post.date_posted }}</strong></em></h6>
-                                            <div>
-                                                <a href="{% url 'details' post.id %}" class="btn profile-edit-btn btn-btn-dark">Home Page</a>
-                                            </div>
                                             
+                                            <h4 class="text-muted card-text lh-lg text-center">{{post.title}}</h4>
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5> AUTHOR: {{post.author}}</h5>
+                                                <h5>{{post.date_posted }}</h5>
+                                            </div>
+                                            <h5 class="text-capitalize lh-lg ">Posted by: <strong>{{ user.username}}</strong></h5>                        
+                                            <div>
+                                                <a href="{{post.link}}" class="btn profile-edit-btn btn-btn-dark text-center">Link</a>
+                                            </div>
+  
                                         </div>
                                     </div>
                                 </div>
