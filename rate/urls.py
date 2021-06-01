@@ -20,6 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView,LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken.views import obtain_auth_token
 
 
 
@@ -34,4 +35,5 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.one_step.urls')),
 
     path('tinymce/', include('tinymce.urls')),
+    path('api-token-auth/', obtain_auth_token)
 ]

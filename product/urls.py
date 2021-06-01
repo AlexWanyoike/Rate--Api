@@ -16,6 +16,8 @@ urlpatterns=[
     path('welcome/', views.welcome_mail, name='welcome'),
     
     re_path('comment/(?P<post_id>\d+)', views.comment, name='comment'),
+    path('api/profile/', views.ProfileList.as_view()),
+    path('api/post/', views.PostList.as_view())
 ]
 
 

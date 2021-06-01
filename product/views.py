@@ -9,6 +9,10 @@ from django.urls import reverse_lazy
 import datetime as dt
 from .email import send_welcome_email
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer , PostSerializer
+from rest_framework import status
 
 
 # Create your views here.
@@ -120,5 +124,17 @@ def welcome_mail(request):
     send_welcome_email(name,email)
     
     return redirect(create_profile)
-    
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
+        return Response(serializers.data)
+
+class PostList(APIView):
+    def get(self, request, format=None):
+        all_post = Post.objects.all()
+        serializers = PostSerializer(all_post, many=True)
+        return Response(serializers.data)
+
     
