@@ -24,12 +24,12 @@ class CreatePostForm(forms.ModelForm):
 class CreateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user']
+        exclude = ['user', 'profile']
 
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user']
+        exclude = ['user', 'profile']
 
 
 

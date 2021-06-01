@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
 
-          <form  action="{% url 'create_profile' %}" method="post">
+          <form method="POST" action="{% url 'create_post' %}"  enctype="multipart/form-data" >
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
