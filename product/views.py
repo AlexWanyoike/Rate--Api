@@ -3,11 +3,12 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post , Profile , Comment
 from django.contrib import messages
-from .forms import  CommentForm , CreatePostForm, UpdateProfileForm , NewsLetterForm
+from .forms import  CommentForm , CreatePostForm, UpdateProfileForm , NewsLetterForm, CreateProfileForm
 from .email import send_welcome_email
 from django.urls import reverse_lazy
 import datetime as dt
 from .email import send_welcome_email
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -54,29 +55,43 @@ def profile(request, username):
 def login(request):
     return render(request ,'/registration/login.html')
 
-def edit_profile(request ):
+def create_profile(request ):
     current_user = request.user
     if request.method == 'POST':
-        form = UpdateProfileForm(request.POST, request.FILES)
+        form = CreateProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-            
-            send_welcome_email(profile.user.username, profile.user.email)
-            
-        return redirect('/accounts/login', username=current_user.username)
+                
+        return redirect('/')
 
     else:
-        form = UpdateProfileForm()
-    return render(request, 'edit_profile.html', {"form": form})
+        form = CreateProfileForm()
+    return render(request, 'create_profile.html', {"form": form})
+
+
+def edit_profile(request , username):
+    user = User.objects.get(username=username)
+    current_user = request.user
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
+        return redirect('profile', user.username)
+
+    else:
+        form = UpdateProfileForm(instance=current_user.profile)
+
+    return render(request, 'edit_profile.html' , {"form": form})
     
 
 
 def comment(request , post_id):
+    current_user = request.user
     post = Post.objects.get(pk=post_id)
-    content = request.GET.get("comment")
-    
+    content = request.GET.get("comment")   
     user = request.user
     comment = Comment(post=post,content=content,user=current_user)
     comment.save_comment()
@@ -101,9 +116,9 @@ def create_post(request):
 def welcome_mail(request):
     user = request.user
     email = user.email
-    name = user.name
+    name = user.username
     send_welcome_email(name,email)
     
-    return redirect(profile)
+    return redirect(create_profile)
     
     

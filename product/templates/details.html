@@ -246,13 +246,13 @@ body {
             <div class="card-body">
               <!-- Comment Form -->
              
-              <form role="add_comment" , action= 'comment'>
+              <form role="add_comment" action= "{% url 'comment' post_id=post.id%}">
                 {% csrf_token%}
                 <div class="fal fa-comment">
                     <input type="text" class="form-control" placeholder="Add a comment" name="comment"
                         style="font-size: 1.2rem; border: 0;">
                     <div class="input-group-btn">
-                      <button type="button" style="font-size: 1.2rem;" type="submit" class="btn btn-dark">Comment</button>
+                      <button style="font-size: 1.2rem;" type="submit" class="btn btn-dark">Comment</button>
                     </div>
                 </div>
               </form>
@@ -260,7 +260,7 @@ body {
               <br>
               <div class="list-group">
                 {% for comment in comments %}
-                  
+                  {% if comment.post.id == post.id%}
 
                     <div class="list-group">
                       <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
@@ -272,7 +272,8 @@ body {
                         <small>Rating</small>
                       </a>
                     </div>
-
+                    
+                  {% endif %}
                     
                   
                 {% endfor %}

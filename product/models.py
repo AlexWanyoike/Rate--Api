@@ -28,7 +28,7 @@ class Profile(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField(max_length=160)
-    #date_posted = models.DateTimeField(auto_now_add=True, default='')
+    date_posted = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     author = models.CharField(max_length=30)
     image = models.ImageField(upload_to='media/')
@@ -60,12 +60,12 @@ class Post(models.Model):
         post = cls.objects.filter(user__username__contains=username)
         return post 
 
-    # class Meta:
-    #     ordering = ['-date_posted']
+    class Meta:
+        ordering = ['-date_posted']
 
 class Comment(models.Model):
     content = models.TextField(max_length=300, default='')
-    
+    date_commented = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
 
@@ -81,5 +81,8 @@ class Comment(models.Model):
     @classmethod
     def get_post_comments(cls,post):
         return cls.objects.filter(post =post)
+
+    class Meta:
+        ordering = ['-date_commented']
 
    
