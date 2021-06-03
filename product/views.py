@@ -34,6 +34,7 @@ def details(request , pk):
     context = {'post': post , 'profile': profile , 'comments': comments}
     return render(request ,'details.html', context)
 
+@login_required
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -59,6 +60,7 @@ def profile(request, username):
 def login(request):
     return render(request ,'/registration/login.html')
 
+@login_required
 def create_profile(request ):
     current_user = request.user
     if request.method == 'POST':
@@ -74,7 +76,7 @@ def create_profile(request ):
         form = CreateProfileForm()
     return render(request, 'create_profile.html', {"form": form})
 
-
+@login_required
 def edit_profile(request , username):
     user = User.objects.get(username=username)
     current_user = request.user
@@ -91,7 +93,7 @@ def edit_profile(request , username):
     return render(request, 'edit_profile.html' , {"form": form})
     
 
-
+@login_required
 def comment(request , post_id):
     current_user = request.user
     post = Post.objects.get(pk=post_id)
@@ -102,6 +104,7 @@ def comment(request , post_id):
 
     return redirect('main')
 
+@login_required
 def create_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -116,7 +119,7 @@ def create_post(request):
         form = CreatePostForm()
         return render(request, 'create_post.html', {"form": form})
 
-
+@login_required
 def welcome_mail(request):
     user = request.user
     email = user.email
@@ -125,6 +128,7 @@ def welcome_mail(request):
     
     return redirect(create_profile)
 
+@login_required
 def search_post(request):
     if 'keyword' in request.GET and request.GET["keyword"]:
         search_term = request.GET.get("keyword")
@@ -137,12 +141,14 @@ def search_post(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html', {"message": message})
 
+@login_required
 class ProfileList(APIView):
     def get(self, request, format=None):
         all_profile = Profile.objects.all()
         serializers = ProfileSerializer(all_profile, many=True)
         return Response(serializers.data)
 
+@login_required
 class PostList(APIView):
     def get(self, request, format=None):
         all_post = Post.objects.all()
