@@ -67,7 +67,7 @@ This project was generated with
 
 ## Link to Deployed Site:
 
-
+https://productrate.herokuapp.com/
 
 ## Support , Bugs and Contact Details
 
